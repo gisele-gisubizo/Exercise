@@ -1,7 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from "dotenv"
-import mainRouter from './Routes/indexRouter.js';
+import mainRouter from './Routes/indexRouting.js';
+import indexRouter from './Routes/indexRouter.js'
 // const express = require('express');
 import bodyParser from 'body-parser';
 
@@ -9,6 +10,7 @@ dotenv.config();
 const app = express();
 app.use(bodyParser.json());
 app.use('/',mainRouter);
+app.use('/',indexRouter)
 
 //variables that hold vvalues inside the .env file
 const db_user = process.env.DB_USER;

@@ -74,3 +74,19 @@ export const getAllProductById= async(req,res)=>{
     
         }
     
+
+        export const updateProductById = async (req, res) => {
+            try{
+        
+                const {id} = req.params;
+        
+                const products= await Product.findByIdAndUpdate(id, req.body);
+                if(!products){
+                    return res.status(404).json({ success: false, message: "Contact not found" });
+                }
+                res.status(200).json({ success: true, message: "Contact updated successfully", data: updated_data });
+        
+            }catch(error){
+                res.status(500).json({ success: false, message: "Server error", error: error.message });
+            }
+        }

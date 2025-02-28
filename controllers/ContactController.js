@@ -67,3 +67,19 @@ export const getAllContactDelete= async(req,res)=>{
         res.status(500).json({sucess:false,message:"Server Error",error:error.message});}
 
     }
+
+    export const updateContactById = async (req, res) => {
+        try{
+    
+            const {id} = req.params;
+    
+            const contacts= await Blog.findByIdAndUpdate(id, req.body);
+            if(!contacts){
+                return res.status(404).json({ success: false, message: "Blog not found" });
+            }
+            res.status(200).json({ success: true, message: "Blog updated successfully",contacts});
+    
+        }catch(error){
+            res.status(500).json({ success: false, message: "Server error", error: error.message });
+        }
+    }

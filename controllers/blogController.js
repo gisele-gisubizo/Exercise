@@ -52,41 +52,41 @@ export const getAllBlogById= async(req,res)=>{
 
     
 
-//     export const getBlogDelete= async(req,res)=>{
+    export const getBlogDeleteById= async(req,res)=>{
 
-//         try{
+        try{
     
-//             const{id}=req.params;
-//             const blogs= await Blog.findByIdAndDelete(id);
-//             if (!blogs)
-//             {
-//                return res.status(404).json({sucess:false,message:"Server Error",error:error.message});
+            const{id}=req.params;
+            const blogs= await Blog.findByIdAndDelete(id);
+            if (!blogs)
+            {
+               return res.status(404).json({sucess:false,message:"Server Error",error:error.message});
             
-//             }
-//             res.status(200).json({sucess:true,products});}
+            }
+            res.status(200).json({sucess:true,blogs});}
             
     
     
         
-//         catch(error){
+        catch(error){
     
-//             res.status(500).json({sucess:false,message:"Server Error",error:error.message});}
+            res.status(500).json({sucess:false,message:"Server Error",error:error.message});}
     
-//         }
+        }
     
 
-//         export const updateBlogById = async (req, res) => {
-//             try{
+        export const updateBlogById = async (req, res) => {
+            try{
         
-//                 const {id} = req.params;
+                const {id} = req.params;
         
-//                 const blogs= await Blog.findByIdAndUpdate(id, req.body);
-//                 if(!blogs){
-//                     return res.status(404).json({ success: false, message: "Blog not found" });
-//                 }
-//                 res.status(200).json({ success: true, message: "Blog updated successfully", data: updated_data });
+                const blogs= await Blog.findByIdAndUpdate(id, req.body);
+                if(!blogs){
+                    return res.status(404).json({ success: false, message: "Blog not found" });
+                }
+                res.status(200).json({ success: true, message: "Blog updated successfully", blogs });
         
-//             }catch(error){
-//                 res.status(500).json({ success: false, message: "Server error", error: error.message });
-//             }
-//         }
+            }catch(error){
+                res.status(500).json({ success: false, message: "Server error", error: error.message });
+            }
+        }

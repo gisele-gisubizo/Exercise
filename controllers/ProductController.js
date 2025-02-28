@@ -84,7 +84,7 @@ export const getAllProductById= async(req,res)=>{
                 if(!products){
                     return res.status(404).json({ success: false, message: "Contact not found" });
                 }
-                res.status(200).json({ success: true, message: "Contact updated successfully", data: updated_data });
+                res.status(200).json({ success: true, message: "Contact updated successfully", products });
         
             }catch(error){
                 res.status(500).json({ success: false, message: "Server error", error: error.message });
